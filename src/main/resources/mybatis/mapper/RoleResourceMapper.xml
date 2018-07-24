@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ninep.jubu.mapper.RoleResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.ninep.jubu.domain.RoleResource" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_ids" property="roleIds" jdbcType="VARCHAR" />
+    <result column="url_pattern" property="urlPattern" jdbcType="VARCHAR" />
+    <result column="url_description" property="urlDescription" jdbcType="VARCHAR" />
+    <result column="is_menu" property="isMenu" jdbcType="INTEGER" />
+    <result column="mod_time" property="modTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_ids, url_pattern, url_description, is_menu, mod_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from role_resource
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from role_resource
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ninep.jubu.domain.RoleResource" >
+    insert into role_resource (id, role_ids, url_pattern, 
+      url_description, is_menu, mod_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{roleIds,jdbcType=VARCHAR}, #{urlPattern,jdbcType=VARCHAR}, 
+      #{urlDescription,jdbcType=VARCHAR}, #{isMenu,jdbcType=INTEGER}, #{modTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ninep.jubu.domain.RoleResource" >
+    insert into role_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleIds != null" >
+        role_ids,
+      </if>
+      <if test="urlPattern != null" >
+        url_pattern,
+      </if>
+      <if test="urlDescription != null" >
+        url_description,
+      </if>
+      <if test="isMenu != null" >
+        is_menu,
+      </if>
+      <if test="modTime != null" >
+        mod_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleIds != null" >
+        #{roleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPattern != null" >
+        #{urlPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="urlDescription != null" >
+        #{urlDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="isMenu != null" >
+        #{isMenu,jdbcType=INTEGER},
+      </if>
+      <if test="modTime != null" >
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ninep.jubu.domain.RoleResource" >
+    update role_resource
+    <set >
+      <if test="roleIds != null" >
+        role_ids = #{roleIds,jdbcType=VARCHAR},
+      </if>
+      <if test="urlPattern != null" >
+        url_pattern = #{urlPattern,jdbcType=VARCHAR},
+      </if>
+      <if test="urlDescription != null" >
+        url_description = #{urlDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="isMenu != null" >
+        is_menu = #{isMenu,jdbcType=INTEGER},
+      </if>
+      <if test="modTime != null" >
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ninep.jubu.domain.RoleResource" >
+    update role_resource
+    set role_ids = #{roleIds,jdbcType=VARCHAR},
+      url_pattern = #{urlPattern,jdbcType=VARCHAR},
+      url_description = #{urlDescription,jdbcType=VARCHAR},
+      is_menu = #{isMenu,jdbcType=INTEGER},
+      mod_time = #{modTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

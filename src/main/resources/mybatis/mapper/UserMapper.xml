@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ninep.jubu.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ninep.jubu.domain.User">
+    <id column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="user_num" jdbcType="INTEGER" property="userNum" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="phone_num" jdbcType="VARCHAR" property="phoneNum" />
+    <result column="department" jdbcType="SMALLINT" property="department" />
+    <result column="gender" jdbcType="TINYINT" property="gender" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="join_date" jdbcType="TIMESTAMP" property="joinDate" />
+    <result column="leave_date" jdbcType="TIMESTAMP" property="leaveDate" />
+    <result column="add_user" jdbcType="CHAR" property="addUser" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="mod_user" jdbcType="CHAR" property="modUser" />
+    <result column="mod_time" jdbcType="TIMESTAMP" property="modTime" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_num, user_name, password, phone_num, department, gender, status, join_date, 
+    leave_date, add_user, add_time, mod_user, mod_time, email
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where user_id = #{userId}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where user_id = #{userId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ninep.jubu.domain.User">
+    insert into user (user_id, user_num, user_name, 
+      password, phone_num, department, 
+      gender, status, join_date, 
+      leave_date, add_user, add_time, 
+      mod_user, mod_time, email
+      )
+    values (#{userId,jdbcType=CHAR}, #{userNum,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{phoneNum,jdbcType=VARCHAR}, #{department,jdbcType=SMALLINT}, 
+      #{gender,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{joinDate,jdbcType=TIMESTAMP}, 
+      #{leaveDate,jdbcType=TIMESTAMP}, #{addUser,jdbcType=CHAR}, #{addTime,jdbcType=TIMESTAMP}, 
+      #{modUser,jdbcType=CHAR}, #{modTime,jdbcType=TIMESTAMP}, #{email,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ninep.jubu.domain.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userNum != null">
+        user_num,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phoneNum != null">
+        phone_num,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="joinDate != null">
+        join_date,
+      </if>
+      <if test="leaveDate != null">
+        leave_date,
+      </if>
+      <if test="addUser != null">
+        add_user,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="modUser != null">
+        mod_user,
+      </if>
+      <if test="modTime != null">
+        mod_time,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userNum != null">
+        #{userNum,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null">
+        #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=SMALLINT},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="joinDate != null">
+        #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveDate != null">
+        #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUser != null">
+        #{addUser,jdbcType=CHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modUser != null">
+        #{modUser,jdbcType=CHAR},
+      </if>
+      <if test="modTime != null">
+        #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ninep.jubu.domain.User">
+    update user
+    <set>
+      <if test="userNum != null">
+        user_num = #{userNum,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNum != null">
+        phone_num = #{phoneNum,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=SMALLINT},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="joinDate != null">
+        join_date = #{joinDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveDate != null">
+        leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="addUser != null">
+        add_user = #{addUser,jdbcType=CHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modUser != null">
+        mod_user = #{modUser,jdbcType=CHAR},
+      </if>
+      <if test="modTime != null">
+        mod_time = #{modTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ninep.jubu.domain.User">
+    update user
+    set user_num = #{userNum,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      phone_num = #{phoneNum,jdbcType=VARCHAR},
+      department = #{department,jdbcType=SMALLINT},
+      gender = #{gender,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      join_date = #{joinDate,jdbcType=TIMESTAMP},
+      leave_date = #{leaveDate,jdbcType=TIMESTAMP},
+      add_user = #{addUser,jdbcType=CHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      mod_user = #{modUser,jdbcType=CHAR},
+      mod_time = #{modTime,jdbcType=TIMESTAMP},
+      email = #{email,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+
+  <select id="getUserByName" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM user
+    WHERE user_name = #{userName}
+  </select>
+</mapper>
