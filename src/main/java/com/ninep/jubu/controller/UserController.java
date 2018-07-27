@@ -2,6 +2,7 @@ package com.ninep.jubu.controller;
 
 import com.ninep.jubu.domain.User;
 import com.ninep.jubu.enums.PositionType;
+import com.ninep.jubu.helper.PasswordHelper;
 import com.ninep.jubu.helper.VoHelper;
 import com.ninep.jubu.param.LoginParam;
 import com.ninep.jubu.result.ApiResponse;
@@ -40,6 +41,8 @@ public class UserController {
     private VoHelper voHelper;
     @Autowired
     private UserService userService;
+    @Autowired
+    private PasswordHelper passwordHelper;
 
     /**
      * 获取部分列表
@@ -75,6 +78,7 @@ public class UserController {
                 return err;
             }
             User user = voHelper.transfer2Domain(userVo);
+            passwordHelper.encryptPassword(user);
             userService.saveUser(user);
             return ApiResponse.createSuccessMsgResult("success");
         } catch (Exception e) {
