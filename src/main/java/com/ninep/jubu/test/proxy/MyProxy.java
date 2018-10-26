@@ -3,7 +3,7 @@ package com.ninep.jubu.test.proxy;
 /**
  * @author wangjunfeng
  * @version 1.0
- * @desc The type Sale menu service.
+ * @desc 手写动态代理.
  * @since 2018/10/26
  */
 public class MyProxy  {
@@ -13,6 +13,9 @@ public class MyProxy  {
                                           MyInvocationHandler h)
             throws IllegalArgumentException
     {
+        if (h == null) {
+            throw new NullPointerException();
+        }
         return null;
     }
 

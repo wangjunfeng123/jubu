@@ -22,9 +22,9 @@ public class MyMeipoProxy implements MyInvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("执行之前的东东");
-        person.findLove();
+        Object invoke = method.invoke(person);
         System.out.println("执行之后的东东");
-        return null;
+        return invoke;
     }
 
 }
