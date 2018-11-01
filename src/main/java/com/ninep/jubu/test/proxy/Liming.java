@@ -28,8 +28,10 @@ public class Liming implements Person {
 
     @Override
     public void findLove() {
+        System.out.println("____________________");
         System.out.println("我是"+name+"；性别"+sex);
         System.out.println("寻找真爱");
+        System.out.println("____________________");
     }
 
 }

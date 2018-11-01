@@ -24,7 +24,7 @@ public class MeipoProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("执行之前的东东");
-        person.findLove();
+        method.invoke(person,args);
         System.out.println("执行之后的东东");
         return null;
     }
