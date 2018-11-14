@@ -20,7 +20,7 @@ public class JdbcTest {
             // jdbc 6部曲
             // 1、注册驱动
             // 2、获取数据库连接
-            // 3、创建prepareStatuement对象
+            // 3、创建prepareStatement对象
             // 4、执行sql
             // 5、遍历获取查询结果
             // 6、关闭数据库连接
@@ -56,8 +56,8 @@ public class JdbcTest {
             // Buffer reply = this.checkErrorPacket(); 读取Mysql服务器登录检验后发送的状态信息，如果成功就返回，如果登录失败则抛出异常
             // send(Buffer packet, int packetLen) ->
             //  -> this.mysqlOutput.write(packetToSend.getByteBuffer(), 0, packetLen);  //把登录信息的字节流发送给MySQL Server
-            conn = DriverManager.getConnection("jdbc:mysql://47.95.8.251:3306/farm?useUnicode=true&characterEncoding=UTF-8",
-                    "root", "dsjlm123456");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farm?useUnicode=true&characterEncoding=UTF-8",
+                    "root", "123456");
 
 
             // 3、执行sql预编译
