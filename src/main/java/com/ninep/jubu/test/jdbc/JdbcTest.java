@@ -56,7 +56,7 @@ public class JdbcTest {
             // Buffer reply = this.checkErrorPacket(); 读取Mysql服务器登录检验后发送的状态信息，如果成功就返回，如果登录失败则抛出异常
             // send(Buffer packet, int packetLen) ->
             //  -> this.mysqlOutput.write(packetToSend.getByteBuffer(), 0, packetLen);  //把登录信息的字节流发送给MySQL Server
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/farm?useUnicode=true&characterEncoding=UTF-8",
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/jubu?useUnicode=true&characterEncoding=UTF-8",
                     "root", "123456");
 
 

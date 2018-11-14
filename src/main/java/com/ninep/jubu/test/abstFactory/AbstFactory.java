@@ -18,7 +18,7 @@ public abstract class AbstFactory {
     //
     public Car getCar(String name) {
         if ("Benz".equalsIgnoreCase(name)) {
-            return new Benz();
+            return new DefaultFactory().getCar();
         } else if ("Audi".equalsIgnoreCase(name)) {
             return new Audi();
         } else {
