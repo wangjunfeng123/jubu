@@ -62,9 +62,11 @@ public class JdbcTest {
 
             // 3、执行sql预编译
 
+            // Connection 接口 ----> ConnectionImpl实现类 prepareStatement（sql）
             // 3.1、String nativeSql = this.getProcessEscapeCodesForPrepStmts()?this.nativeSQL(sql):sql; 需要编译的
             // pStmt = (com.mysql.jdbc.PreparedStatement)this.clientPrepareStatement(nativeSql, resultSetType, resultSetConcurrency, false);
-            // -> pStmt = com.mysql.jdbc.PreparedStatement.getInstance(this.getMultiHostSafeProxy(), nativeSql, this.database);  创建preparedStatement实例 并返回
+            // -> pStmt = com.mysql.jdbc.PreparedStatement.getInstance(this.getMultiHostSafeProxy(), nativeSql, this.database);
+            // 创建new preparedStatement实例 并返回
             pstmt = conn.prepareStatement(sql);
 
             // 3.2 、设置自定义参数，最终把参数保存到preparedStatement实例中
@@ -77,7 +79,36 @@ public class JdbcTest {
             pstmt.setInt(1, id);
 
             //4、执行sql
+            // 重点来了：
+            // 1、调用PreparedStatement的executeQuery()方法，调用其实现类PreparedStatement的该方法，
+            // 获取该连接conn
+            // 一、this.fillSendPacket();封装要发送的sql 序列化成mysql协议的字节流
+            // this.connection.getIO().getSharedSendPacket(); 获取SQL的发送的数据包
+            // sendPacket.writeByte(3); 要发送的数据包的类型，确保容量，
+            // for(i = 0; i < batchedParameterStrings.length; ++i) {
+            // 遍历所有参数的sendPacket.writeBytesNoNull(batchedParameterStrings[i]);
+            // sendPacket.writeBytesNoNull(this.staticSqlStrings[batchedParameterStrings.length]); 如果原始SQL中包含？，
+            // 因此SQL数组中的元素格式一定比参数的个数多1，so，把这里的staticSQLstring最后一段SQL语句放到sendpackage,
+            // 封装 mysql SQL语句的字节流，///////////////////////////////////////////
+            // 二、rs = this.executeInternal(this.maxRows, sendPacket, this.createStreamingResultSet(), this.firstCharOfStmt == 83, metadataFromCache, false);
+            //  rs = locallyScopedConnection.execSQL(......);
+            // 执行ConnectionImpl中的 execSQL(。。。。。。)
+            //  find  method  -->  this.io.sqlQueryDirect( --> this.sendCommand(
+            //  MysqlIO --> send(Buffer packet
             rs = pstmt.executeQuery();
+
+
+            ///////////////// pstmt.addBatch();  批处理方法分析
+            // this.batchedArgs.add(new PreparedStatement.BatchParams(this.parameterValues,
+            // this.parameterStreams, this.isStream, this.streamLengths, this.isNull));  这个方法就是想args中追加参数
+            //  executeBatchInternal() 批处理执行结果  ---> this.executeBatchSerially(batchTimeout);
+
+            // ## mysql 执行过程：addBatch()，用batchArgs列表装BatchParams查询参数，for循环遍历，多次执行executeUpdate，分三种情况执行，
+            // maxAllowedPacket最大发送SQL大小限制
+            // ### oracle 执行过程：for循环，先编译、检查、对象创建、参数设置、调用updateExecuteFetch
+            // ## mybatis startBatch(),update(),executeBatch()都是如何执行的。
+
+
 
             //5、循环遍历结果
             while (rs.next()) {
