@@ -9,9 +9,8 @@ import java.io.Serializable;
  * @since 2018/11/29
  */
 public class Person implements Serializable {
-//    private static final long serialVersionUID = -4573864018880772625L;
-
-    private String name;
+    private static final long serialVersionUID = -4573864018880472625L;
+    private transient String name;
     private Integer age;
 
     public String getName() {

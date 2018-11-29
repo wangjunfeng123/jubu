@@ -11,7 +11,7 @@ import java.io.*;
 public class TestMain {
 
     public static void main(String[] args) {
-//        deSerialize();
+        deSerialize();
         //反序列化
         Person person = unDeSerialize();
         System.out.println(person);
