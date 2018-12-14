@@ -19,9 +19,13 @@ public class TestSpring implements ApplicationContextAware{
 
     public static void main(String[] args) {
 
+        // FileSystemXmlApplicationContext("test-spring.xml")构造方法，最终指向了3个方法super(parent),setConfigLocations(configLocations);refresh();
+        // super(parent):为容器设置好bean资源加载器，
+        // this.setConfigLocations(configLocations);设置bean定义资源文件的路径
+        //
         FileSystemXmlApplicationContext fsac = new FileSystemXmlApplicationContext("test-spring.xml");
 
-        // 简单ioc容器XmlBeanFactory的创建
+        // 一、简单ioc容器XmlBeanFactory的创建
         // 1.根据xml配置文件创建resource对象，
         ClassPathResource resource = new ClassPathResource("application.xml");
         // 2. 创建DefaultListableBeanFactory 工厂
