@@ -18,13 +18,6 @@ public class TestSpring implements ApplicationContextAware{
     private ApplicationContext applicationContext;
 
     public static void main(String[] args) {
-
-        // FileSystemXmlApplicationContext("test-spring.xml")构造方法，最终指向了3个方法super(parent),setConfigLocations(configLocations);refresh();
-        // super(parent):为容器设置好bean资源加载器，
-        // this.setConfigLocations(configLocations);设置bean定义资源文件的路径
-        //
-        FileSystemXmlApplicationContext fsac = new FileSystemXmlApplicationContext("test-spring.xml");
-
         // 一、简单ioc容器XmlBeanFactory的创建
         // 1.根据xml配置文件创建resource对象，
         ClassPathResource resource = new ClassPathResource("application.xml");
@@ -34,6 +27,17 @@ public class TestSpring implements ApplicationContextAware{
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         // 4.xmlBeanDefinitionReader执行载入beanDefinition的方法，最后完成bean的载入和注册，将bean放入IOC容器中。以后就可以从容器中获取bean
         reader.loadBeanDefinitions(resource);
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        // 高富帅IOC容器
+        // FileSystemXmlApplicationContext("test-spring.xml")构造方法，最终指向了3个方法super(parent),setConfigLocations(configLocations);refresh();
+        // super(parent):为容器设置好bean资源加载器，为ApplicationContext
+        // this.setConfigLocations(configLocations);设置bean定义资源文件的路径,放入AbstractRefreshableConfigApplicationContext属性中
+        // FileSystemXmlApplicationContext的父类AbstractApplicationContext中
+        // refresh()
+        FileSystemXmlApplicationContext fsac = new FileSystemXmlApplicationContext("test-spring.xml");
+
 
 
     }
