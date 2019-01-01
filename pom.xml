@@ -6,7 +6,10 @@
 	<groupId>com.ninep</groupId>
 	<artifactId>jubu</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>webservice</module>
+    </modules>
+    <packaging>jar</packaging>
 
 	<name>jubu</name>
 	<description>Demo project for Spring Boot</description>
