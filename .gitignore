@@ -28,3 +28,4 @@
 /logs
 /target
 /*.iml
+/webservice/target/
