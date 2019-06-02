@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  * @desc The type Sale menu service.
  * @since 2019/5/28
  */
-public class BounceFrame extends JFrame{
+public class BounceFrame extends JFrame {
     private BallComponent comp;
     public static final int STEPS = 2000;
     public static final int DELAY = 3;
@@ -34,20 +34,31 @@ public class BounceFrame extends JFrame{
     }
 
 
-    public void addBall () {
-        try {
-            Ball ball = new Ball();
-            comp.add(ball);
+    public void addBall() {
+        Ball ball = new Ball();
+        comp.add(ball);
 
-            for (int i = 1; i < STEPS; i++) {
-                ball.move(comp.getBounds());
-                comp.paint(comp.getGraphics());
-                Thread.sleep(DELAY);
+        Runnable task = () -> {
+            try {
+                for (int i = 1; i < STEPS; i++) {
+                    ball.move(comp.getBounds());
+                    comp.paint(comp.getGraphics());
+                    Thread.sleep(5);
+                    System.out.println("current thread status: " + Thread.currentThread().isInterrupted());
+                    Thread.currentThread().interrupt();
+                    boolean interrupted = Thread.interrupted();
+                    System.out.println("current thread status: " + Thread.currentThread().isInterrupted());
+                }
+            }catch (InterruptedException e) {
+                System.out.println("thread interrupted");
+                boolean interrupted = Thread.currentThread().isInterrupted();
+                System.out.println("current thread status: " + interrupted);
+                Thread.currentThread().interrupt();
+                System.out.println("current thread status: " + interrupted);
             }
-
-        } catch (InterruptedException e) {
-
-        }
+        };
+        Thread thread = new Thread(task);
+        thread.start();
     }
 
 }
