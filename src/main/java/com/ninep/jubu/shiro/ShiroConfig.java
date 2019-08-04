@@ -43,7 +43,7 @@ public class ShiroConfig {
         //过滤器执行顺序:从上到下，** 一定要放到最下面，否则很容易出现不好使的情况
         //authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问
         //user:配置记住我或认证通过可以访问
-        filterChainDefinitionMap.put("/**", "authc");
+//        filterChainDefinitionMap.put("/**", "authc");
 
         //如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");

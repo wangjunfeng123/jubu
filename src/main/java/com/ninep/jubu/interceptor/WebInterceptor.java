@@ -77,11 +77,11 @@ public class WebInterceptor implements HandlerInterceptor {
             user = FarmUtils.handleDebug();
         }
 
-        if (ObjectUtil.isNullObj(user)) {
+        /*if (ObjectUtil.isNullObj(user)) {
             Map<String, Object> data = ApiResponse.createFailMsgResult(ErrorType.LOGIN_INFO_ERROR, "没有检测到用户登录信息");
             FarmUtils.writeJsonResponse(data, response);
             return false;
-        }
+        }*/
         JubuThreadCache.setUser(user);
 
         //todo 处理页面权限  shiro 实现

@@ -29,3 +29,8 @@
 /target
 /*.iml
 /webservice/target/
+/logs/
+src/main/java/com/ninep/jubu/test/webservice/client/
+src/main/resources/templates/
+webservice/src/main/resources/
+webservice/src/test/

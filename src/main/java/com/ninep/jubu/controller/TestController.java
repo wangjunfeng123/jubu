@@ -1,5 +1,6 @@
 package com.ninep.jubu.controller;
 
+import com.ninep.jubu.domain.Person;
 import com.ninep.jubu.domain.User;
 import com.ninep.jubu.result.ApiResponse;
 import com.ninep.jubu.service.UserService;
@@ -33,6 +34,14 @@ public class TestController {
     @RequestMapping("/hello")
     public String index() {
         return "Hello World";
+    }
+
+    @GetMapping("person/{id}")
+    public Person person(@PathVariable Integer id, @RequestParam String name) {
+        Person person = new Person();
+        person.setId(id);
+        person.setName(name);
+        return person;
     }
 
     /**
