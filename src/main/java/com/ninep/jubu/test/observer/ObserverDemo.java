@@ -1,12 +1,11 @@
 package com.ninep.jubu.test.observer;
 
 import java.util.Observable;
-import java.util.Observer;
 
 /**
  * @author wangjunfeng
  * @version 1.0
- * @description 观察者模式
+ * @desc 观察者模式
  * @since 2019/8/28
  */
 public class ObserverDemo {
