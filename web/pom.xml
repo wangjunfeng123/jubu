@@ -11,4 +11,10 @@
     <name>web</name>
     <description>module for web</description>
 
+    <parent>
+        <groupId>com.ninep</groupId>
+        <artifactId>jubu</artifactId>
+        <version>${project.version}</version>
+    </parent>
+
 </project>

@@ -1,4 +1,4 @@
-package com.ninep.jubu.test.webservice.server;
+package com.ninep.jubu.webservice;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;

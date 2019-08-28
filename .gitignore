@@ -30,7 +30,7 @@
 /*.iml
 /webservice/target/
 /logs/
-src/main/java/com/ninep/jubu/test/webservice/client/
-src/main/resources/templates/
+web/src/main/java/com/ninep/jubu/test/webservice/client/
+web/src/main/resources/templates/
 webservice/src/main/resources/
 webservice/src/test/
