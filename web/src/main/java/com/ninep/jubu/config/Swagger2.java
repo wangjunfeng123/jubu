@@ -32,10 +32,9 @@ public class Swagger2 {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot中使用Swagger2构建RESTful API")
-                .description("springboot fram 配置swagger")
+                .title("Spring Boot中使用Swagger2构建REST ful API")
+                .description("springBoot farm 配置swagger")
                 .termsOfServiceUrl("https://swagger.io/")
-                .contact("wangjf")
                 .version("1.0")
                 .build();
     }

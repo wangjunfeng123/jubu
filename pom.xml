@@ -7,7 +7,6 @@
 	<artifactId>jubu</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>webservice</module>
 		<module>web</module>
 	</modules>
     <packaging>pom</packaging>
