@@ -1,4 +1,4 @@
-package com.bigData.farm.config;
+package com.ninep.jubu.test.observer;
 
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -9,8 +9,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @desc The type Sale menu service.
  * @since 2019/8/28
  */
-public class SpringApplicationEvent extends ApplicationEvent {
-    public SpringApplicationEvent(Object source) {
+public class FarmApplicationEvent extends ApplicationEvent {
+    public FarmApplicationEvent(Object source) {
         super(source);
     }
 
