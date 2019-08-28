@@ -8,8 +8,9 @@
 	<version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>webservice</module>
-    </modules>
-    <packaging>jar</packaging>
+		<module>web</module>
+	</modules>
+    <packaging>pom</packaging>
 
 	<name>jubu</name>
 	<description>Demo project for Spring Boot</description>
@@ -78,6 +79,12 @@
 			<artifactId>druid-spring-boot-starter</artifactId>
 			<version>1.1.9</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-client -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-client</artifactId>
+		</dependency>
+
 
 		<!--  去掉 <scope>test</scope>-->
 		<dependency>
