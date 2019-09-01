@@ -4,8 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ninep</groupId>
-    <artifactId>jubu</artifactId>
+    <artifactId>web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>web</name>
+    <description>module for web</description>
+
     <build>
         <plugins>
             <plugin>
@@ -19,14 +23,12 @@
         </plugins>
     </build>
 
-    <packaging>jar</packaging>
-    <name>web</name>
-    <description>module for web</description>
+
 
     <parent>
         <groupId>com.ninep</groupId>
         <artifactId>jubu</artifactId>
-        <version>${project.version}</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
 
 </project>
