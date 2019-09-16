@@ -12,17 +12,13 @@ import java.util.concurrent.Executors;
 public class ExecutorTest {
     private static ExecutorService executor = Executors.newFixedThreadPool(12);
 
+
     private static void testMethod() {
         executor.execute(new Task());
     }
 
-
-    /**
-     * main 方法
-     * @param args 参数
-     */
     public static void main(String[] args) {
-        testMethod();
+        ExecutorTest.testMethod();
     }
 
     /**
