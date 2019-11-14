@@ -8,6 +8,13 @@ package com.ninep.jubu.test.singleTon;
  */
 public class SingleTon2 {
 
+    /**
+     * 单例模式：
+     * 模式
+     * 饿汉：都先创建了，啥时候用直接用
+     *
+     * 线程安全：线程不安全
+     */
     private SingleTon2() {
     }
 

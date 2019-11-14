@@ -8,15 +8,23 @@ package com.ninep.jubu.test.singleTon;
  */
 public class SingleTon1 {
 
-    private static SingleTon1 instance;
-    public static SingleTon1 getInstance() {
+
+    /**
+     * 单例模式：
+     * 懒汉模式
+     * 懒汉：就是比较懒，啥时候用啥时候创建
+     *
+     * 线程安全：线程不安全
+     */
+    private SingleTon1 instance;
+    private SingleTon1() {
+    }
+
+    public SingleTon1 getInstance() {
         if (instance == null) {
             return new SingleTon1();
         }
         return instance;
-    }
-
-    private SingleTon1() {
     }
 
 }
